@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: LogAnalyser
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: log-analyzer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+openai:
+  api:
+    key: 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
+    url: https://api.openai.com/v1/
+    model: gpt-4.1-mini
+    timeout: 5000
