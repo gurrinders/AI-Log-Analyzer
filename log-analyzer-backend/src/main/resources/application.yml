@@ -1,6 +1,14 @@
 spring:
   application:
     name: LogAnalyser
+  security:
+    user:
+      name: admin
+      password: secret123
+
+  #config:
+  #  activate:
+  #    on-profile: dev
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -18,3 +26,20 @@ openai:
     url: https://api.openai.com/v1/
     model: gpt-4.1-mini
     timeout: 5000
+
+# Swagger / OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs # Maps JSON/YAML docs to /docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+# Logging Levels (Essential for a 'LogAnalyser' project)
+logging:
+  level:
+    root: INFO
+    com.iqspark: DEBUG # See your own service logs
+    org.springframework.web: INFO
+    org.apache.kafka: WARN # Keep Kafka noise down unless debugging connection
